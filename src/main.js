@@ -3,13 +3,20 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+import axios from 'axios'
+//导入清除默认样式的CSS
+import 'normalize.css'
 
+
+Vue.use(ElementUI)
 Vue.config.productionTip = false
+Vue.prototype.$ajax = axios
+
 
 /* eslint-disable no-new */
 new Vue({
-  el: '#app',
   router,
-  components: { App },
-  template: '<App/>'
-})
+  render: h => h(App)
+}).$mount('#app')
