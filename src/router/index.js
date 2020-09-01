@@ -5,6 +5,8 @@ import User from '../components/user/User.vue'
 import Main from '../components/main/Main.vue'
 import Portal from '../components/portal/Portal.vue'
 import UserAdd from '../components/user/UserAdd.vue'
+import UserUpdate from '../components/user/UserUpdate.vue'
+
 
 Vue.use(Router)
 
@@ -30,6 +32,10 @@ const router =  new Router({
         {
           path: 'userAdd',
           component:UserAdd
+        },
+        {
+          path: 'userUpdate/:id',
+          component: UserUpdate
         }
       ]
     },

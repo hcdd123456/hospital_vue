@@ -3,7 +3,7 @@
       <el-breadcrumb class="el-icon-arrow-right">
         <el-breadcrumb-item :to="{ path: '/main' }">首页</el-breadcrumb-item>
         <el-breadcrumb-item :to="{ path: '/main/user' }">用户列表</el-breadcrumb-item>
-        <el-breadcrumb-item>用户新增</el-breadcrumb-item>
+        <el-breadcrumb-item>用户编辑</el-breadcrumb-item>
       </el-breadcrumb>
       <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
         <el-form-item label="登录名" prop="username">
@@ -70,12 +70,12 @@
 
         <el-form-item label="删除标记">
           <el-switch v-model="ruleForm.delmark"
-                     active-value="1"
-                     inactive-value="0"></el-switch>
+                     :active-value=1
+                     :inactive-value=0></el-switch>
         </el-form-item>
 
         <el-form-item>
-          <el-button type="primary" @click="submitForm('ruleForm')">立即创建</el-button>
+          <el-button type="primary" @click="submitForm('ruleForm')">立即修改</el-button>
           <el-button @click="resetForm('ruleForm')">重置</el-button>
         </el-form-item>
       </el-form>
@@ -137,11 +137,21 @@ import {HOST} from '../../common/js/config'
       }
     },
     created(){
+      //取出路由传递的参数id
+      let id = this.$route.params.id
+      this.selById(id)
       this.selDocTitleID()
       this.selDeptID()
       this.selRegistLeID()
     },
     methods:{
+      //根据主键加载记录
+      selById(id){
+        let url = `${HOST}/user/selById/${id}`
+        this.$ajax.get(url).then((res)=>{
+          this.ruleForm = res.data.object
+        })
+      },
       selDocTitleID(){
         let url = `${HOST}/constantitem/selAll`
         this.$ajax.get(url).then((res)=>{
@@ -164,11 +174,11 @@ import {HOST} from '../../common/js/config'
         this.$refs[formName].validate((valid) => {
           if (valid) {
             //提交服务器
-            let url = `${HOST}/user/userAdd`
+            let url = `${HOST}/user/userUpdate`
             this.$ajax.post(url,this.ruleForm).then(res=>{
               if(res.data.status === 200){
                 this.$message({
-                  message: '添加成功',
+                  message: '修改成功',
                   type: 'success'
                 });
               }
@@ -177,7 +187,6 @@ import {HOST} from '../../common/js/config'
         });
       }
     }
-
   }
 </script>
 

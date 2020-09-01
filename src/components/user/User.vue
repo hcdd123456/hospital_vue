@@ -3,7 +3,6 @@
 
       <el-breadcrumb class="el-icon-arrow-right">
         <el-breadcrumb-item :to="{ path: '/main' }">首页</el-breadcrumb-item>
-        <el-breadcrumb-item>用户管理</el-breadcrumb-item>
         <el-breadcrumb-item>用户列表</el-breadcrumb-item>
       </el-breadcrumb>
       <el-button type="primary" icon="el-icon-edit" circle @click="handleAdd"></el-button>
@@ -123,6 +122,30 @@ import {HOST} from '../../common/js/config'
       //跳转用户新增页面
       handleAdd(){
         this.$router.push('/main/userAdd')
+      },
+      //删除用户
+      handleDelete(id){
+        let url = `${HOST}/user/delById/${id}`
+        this.$ajax.get(url).then((res)=>{
+          if(res.data.status === 200){
+            this.$message({
+              message: '删除成功',
+              type: 'success'
+            });
+          }else {
+            this.$message({
+              message: '删除失败',
+              type: 'fail'
+            });
+          }
+          //重新加载数据
+          this.currPage = 1
+          this.getData()
+        })
+      },
+      //编辑用户
+      handleUpdate(id){
+        this.$router.push(`/main/userUpdate/${id}`)
       }
     },
     filters:{
