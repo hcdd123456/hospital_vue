@@ -1,11 +1,17 @@
 <template>
     <div>
+
+      <el-breadcrumb class="el-icon-arrow-right">
+        <el-breadcrumb-item :to="{ path: '/main' }">首页</el-breadcrumb-item>
+        <el-breadcrumb-item>用户管理</el-breadcrumb-item>
+        <el-breadcrumb-item>用户列表</el-breadcrumb-item>
+      </el-breadcrumb>
+      <el-button type="primary" icon="el-icon-edit" circle @click="handleAdd"></el-button>
       <el-table
         v-loading="loading"
         :data="pageInfo.list"
         border
         style="width: 100%">
-
         <el-table-column
           prop="username"
           label="登录名"
@@ -55,14 +61,26 @@
             <span style="margin-left: 10px">{{ scope.row.delmark | formatDelMark }}</span>
           </template>
         </el-table-column>
+        <el-table-column label="操作">
+          <template slot-scope="scope">
+            <el-button
+              type="success"
+              size="mini"
+              @click="handleUpdate(scope.row.id)">编辑</el-button>
+            <el-button
+              size="mini"
+              type="danger"
+              @click="handleDelete(scope.row.id)">删除</el-button>
+          </template>
+        </el-table-column>
       </el-table>
+
       <el-pagination
         background
-        layout="prev, pager, next"
-        :total="pageInfo.total"
+        @current-change="handleCurrentChange"
+        layout="total,prev, pager, next"
         :page-size="pageInfo.pageSize"
-        @current-change="handlePage"
-      >
+        :total="pageInfo.total">
       </el-pagination>
     </div>
 </template>
@@ -96,6 +114,16 @@ import {HOST} from '../../common/js/config'
           this.loading = false
         })
       },
+      //页面跳转
+      handleCurrentChange(val){
+        this.currPage = val
+        //加载数据
+        this.getData()
+      },
+      //跳转用户新增页面
+      handleAdd(){
+        this.$router.push('/main/userAdd')
+      }
     },
     filters:{
       formatUseType(row){

@@ -4,6 +4,8 @@ import Index from '../components/index/Index.vue'
 import User from '../components/user/User.vue'
 import Main from '../components/main/Main.vue'
 import Portal from '../components/portal/Portal.vue'
+import UserAdd from '../components/user/UserAdd.vue'
+
 Vue.use(Router)
 
 const router =  new Router({
@@ -24,6 +26,10 @@ const router =  new Router({
         {
           path: 'user',
           component: User
+        },
+        {
+          path: 'userAdd',
+          component:UserAdd
         }
       ]
     },
