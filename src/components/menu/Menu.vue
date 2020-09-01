@@ -17,32 +17,19 @@
                     <span>用户管理</span>
                 </template>
                 <el-menu-item-group>
-                    <el-menu-item index="1-1" @click="user">用户列表</el-menu-item>
-                    <el-menu-item index="1-2" @click="orders">订单管理</el-menu-item>
-                    <el-menu-item index="1-3" @click="collect">查询统计</el-menu-item>
+                    <el-menu-item index="2-1" @click="user">用户列表</el-menu-item>
                 </el-menu-item-group>
             </el-submenu>
             <el-submenu index="3">
                 <template slot="title">
                     <i class="el-icon-setting"></i>
-                    <span>系统运维</span>
+                    <span>科室管理</span>
                 </template>
                 <el-menu-item-group>
-                    <el-menu-item index="1-5" @click="maintain">数据维护</el-menu-item>
-                    <el-menu-item index="1-6" @click="service">在线客服</el-menu-item>
+                    <el-menu-item index="3-1" @click="department">科室列表</el-menu-item>
                 </el-menu-item-group>
             </el-submenu>
-            <el-submenu index="4">
-                <template slot="title">
-                    <i class="el-icon-setting"></i>
-                    <span>系统测试</span>
-                </template>
-                <el-menu-item-group>
-                    <el-menu-item index="1-5" @click="multi">添加富文本</el-menu-item>
-                    <el-menu-item index="1-5" @click="view">查看富文本</el-menu-item>
-                </el-menu-item-group>
-            </el-submenu>
-            <el-menu-item index="5">
+            <el-menu-item index="4">
                 <i class="el-icon-s-release"></i>
                 <span slot="title" @click="logout">退出</span>
             </el-menu-item>
@@ -64,6 +51,9 @@
           },
           user(){
             this.$router.push('/main/user')
+          },
+          department(){
+            this.$router.push('/main/department')
           }
         }
     }

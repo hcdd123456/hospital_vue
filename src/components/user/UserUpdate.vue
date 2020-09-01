@@ -17,16 +17,16 @@
         </el-form-item>
         <el-form-item label="用户类别" prop="usetype">
           <el-select v-model="ruleForm.usetype" placeholder="请选择用户类别">
-            <el-option label="医院管理员" value="1"></el-option>
-            <el-option label="挂号收费员" value="2"></el-option>
-            <el-option label="门诊医生" value="3"></el-option>
-            <el-option label="医技医生" value="4"></el-option>
-            <el-option label="药房操作员" value="5"></el-option>
-            <el-option label="财务管理员" value="6"></el-option>
+            <el-option label="医院管理员" :value=1></el-option>
+            <el-option label="挂号收费员" :value=2></el-option>
+            <el-option label="门诊医生" :value=3></el-option>
+            <el-option label="医技医生" :value=4></el-option>
+            <el-option label="药房操作员" :value=5></el-option>
+            <el-option label="财务管理员" :value=6></el-option>
           </el-select>
         </el-form-item>
 
-        <el-form-item label="医生职称" prop="doctitleid">
+        <el-form-item label="医生职称" prop="constantitem.constantname">
           <el-select v-model="ruleForm.doctitleid"  placeholder="请选择医生职称">
             <el-option
               v-for="item in constantitem"
@@ -44,7 +44,7 @@
                      inactive-value="否"></el-switch>
         </el-form-item>
 
-        <el-form-item label="所在科室"  prop="deptid">
+        <el-form-item label="所在科室"  prop="department.deptname">
           <el-select v-model="ruleForm.deptid"  placeholder="请选择所在科室">
             <el-option
               v-for="item in department"
@@ -153,7 +153,7 @@ import {HOST} from '../../common/js/config'
         })
       },
       selDocTitleID(){
-        let url = `${HOST}/constantitem/selAll`
+        let url = `${HOST}/constantitem/selByUserDocTitleID`
         this.$ajax.get(url).then((res)=>{
           this.constantitem = res.data.obj
         })

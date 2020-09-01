@@ -70,8 +70,8 @@
 
         <el-form-item label="删除标记">
           <el-switch v-model="ruleForm.delmark"
-                     active-value="1"
-                     inactive-value="0"></el-switch>
+                     :active-value=1
+                     :inactive-value=0></el-switch>
         </el-form-item>
 
         <el-form-item>
@@ -143,7 +143,7 @@ import {HOST} from '../../common/js/config'
     },
     methods:{
       selDocTitleID(){
-        let url = `${HOST}/constantitem/selAll`
+        let url = `${HOST}/constantitem/selByUserDocTitleID`
         this.$ajax.get(url).then((res)=>{
           this.constantitem = res.data.obj
         })
