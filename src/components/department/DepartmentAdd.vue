@@ -43,7 +43,7 @@
         </el-form-item>
 
         <el-form-item>
-          <el-button type="primary" @click="submitForm('ruleForm')">立即修改</el-button>
+          <el-button type="primary" @click="submitForm('ruleForm')">立即提交</el-button>
           <el-button @click="resetForm('ruleForm')">重置</el-button>
         </el-form-item>
       </el-form>

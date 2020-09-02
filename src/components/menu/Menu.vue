@@ -29,16 +29,27 @@
                     <el-menu-item index="3-1" @click="department">科室列表</el-menu-item>
                 </el-menu-item-group>
             </el-submenu>
-          <el-submenu index="4">
+            <el-submenu index="4">
+              <template slot="title">
+                <i class="el-icon-setting"></i>
+                <span>挂号级别管理</span>
+              </template>
+              <el-menu-item-group>
+                <el-menu-item index="4-1" @click="registlevel">挂号级别列表</el-menu-item>
+              </el-menu-item-group>
+            </el-submenu>
+
+          <el-submenu index="5">
             <template slot="title">
               <i class="el-icon-setting"></i>
-              <span>挂号级别管理</span>
+              <span>排班管理</span>
             </template>
             <el-menu-item-group>
-              <el-menu-item index="3-1" @click="registlevel">挂号级别列表</el-menu-item>
+              <el-menu-item index="5-1" @click="Rule">排班列表</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
-            <el-menu-item index="5">
+
+            <el-menu-item index="6">
                 <i class="el-icon-s-release"></i>
                 <span slot="title" @click="logout">退出</span>
             </el-menu-item>
@@ -66,6 +77,9 @@
           },
           registlevel(){
             this.$router.push('/main/registlevel')
+          },
+          Rule(){
+            this.$router.push('/main/rule')
           }
         }
     }
