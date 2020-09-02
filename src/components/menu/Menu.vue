@@ -29,7 +29,16 @@
                     <el-menu-item index="3-1" @click="department">科室列表</el-menu-item>
                 </el-menu-item-group>
             </el-submenu>
-            <el-menu-item index="4">
+          <el-submenu index="4">
+            <template slot="title">
+              <i class="el-icon-setting"></i>
+              <span>挂号级别管理</span>
+            </template>
+            <el-menu-item-group>
+              <el-menu-item index="3-1" @click="registlevel">挂号级别列表</el-menu-item>
+            </el-menu-item-group>
+          </el-submenu>
+            <el-menu-item index="5">
                 <i class="el-icon-s-release"></i>
                 <span slot="title" @click="logout">退出</span>
             </el-menu-item>
@@ -54,6 +63,9 @@
           },
           department(){
             this.$router.push('/main/department')
+          },
+          registlevel(){
+            this.$router.push('/main/registlevel')
           }
         }
     }
