@@ -14,6 +14,7 @@ import RegistLevelAdd from '../components/registlevel/RegistLevelAdd.vue'
 import RegistLevelUpdate from '../components/registlevel/RegistLevelUpdate.vue'
 import Rule from '../components/rule/Rule.vue'
 import RuleAdd from '../components/rule/RuleAdd.vue'
+import Login from '../components/login/Login.vue'
 
 Vue.use(Router)
 
@@ -21,7 +22,7 @@ const router = new Router({
   routes: [
     {
       path: '/',
-      component: Index
+      component: Login
     },
     {
       path: '/main',

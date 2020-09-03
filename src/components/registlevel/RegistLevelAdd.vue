@@ -2,7 +2,7 @@
   <div>
     <el-breadcrumb class="el-icon-arrow-right">
       <el-breadcrumb-item :to="{ path: '/main' }">首页</el-breadcrumb-item>
-      <el-breadcrumb-item :to="{ path: '/main/department' }">挂号级别列表</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/main/registlevel' }">挂号级别列表</el-breadcrumb-item>
       <el-breadcrumb-item>挂号级别新增</el-breadcrumb-item>
     </el-breadcrumb>
     <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
@@ -31,12 +31,6 @@
           <el-input v-model="ruleForm.registfee"></el-input>
         </el-col>
       </el-form-item>
-      <el-form-item label="删除标记">
-        <el-switch v-model="ruleForm.delmark"
-                   :active-value=1
-                   :inactive-value=0></el-switch>
-      </el-form-item>
-
 
       <el-form-item>
         <el-button type="primary" @click="submitForm('ruleForm')">立即提交</el-button>

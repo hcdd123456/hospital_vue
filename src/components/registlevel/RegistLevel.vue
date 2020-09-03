@@ -109,14 +109,14 @@
       handleDelete(id){
         let url = `${HOST}/registlevel/delById/${id}`
         this.$ajax.get(url).then((res)=>{
-          if(res.data.status === 200){
+          if(res.data.status === 1){
             this.$message({
               message: '删除成功',
               type: 'success'
             });
-          }else {
+          }else if(res.data.status === 0){
             this.$message({
-              message: '删除失败',
+              message: '删除失败,请先删除已绑定的用户！！！',
               type: 'fail'
             });
           }

@@ -8,6 +8,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 import axios from 'axios'
 //导入清除默认样式的CSS
 import 'normalize.css'
+import store from './store'
 
 
 Vue.use(ElementUI)
@@ -17,6 +18,7 @@ Vue.prototype.$ajax = axios
 
 /* eslint-disable no-new */
 new Vue({
+  store,
   router,
   render: h => h(App)
 }).$mount('#app')

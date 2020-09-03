@@ -47,11 +47,6 @@
             <el-option label="其它" :value=5></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="删除标记">
-          <el-switch v-model="ruleForm.delmark"
-                     :active-value=1
-                     :inactive-value=0></el-switch>
-        </el-form-item>
 
         <el-form-item>
           <el-button type="primary" @click="submitForm('ruleForm')">立即创建</el-button>

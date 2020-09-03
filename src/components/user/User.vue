@@ -85,10 +85,6 @@
 </template>
 
 <script>
-// eslint-disable-next-line indent
-  // eslint-disable-next-line indent
-/* eslint-disable indent,indent,indent,indent,comma-spacing */
-  /* eslint-disable indent,spaced-comment,semi,keyword-spacing,space-before-function-paren,arrow-spacing,space-before-blocks,key-spacing,indent,comma-dangle */
 
   import {HOST} from '../../common/js/config'
   export default {

@@ -68,11 +68,6 @@
           </el-select>
         </el-form-item>
 
-        <el-form-item label="删除标记">
-          <el-switch v-model="ruleForm.delmark"
-                     :active-value=1
-                     :inactive-value=0></el-switch>
-        </el-form-item>
 
         <el-form-item>
           <el-button type="primary" @click="submitForm('ruleForm')">立即创建</el-button>
@@ -171,10 +166,15 @@
             //提交服务器
             let url = `${HOST}/user/userAdd`
             this.$ajax.post(url,this.ruleForm).then(res=>{
-              if(res.data.status === 200){
+              if(res.data.status === 1){
                 this.$message({
                   message: '添加成功',
                   type: 'success'
+                });
+              }else if(res.data.status === 0){
+                this.$message({
+                  message: '用户名重复，请重新输入！！！',
+                  type: 'fail'
                 });
               }
             })

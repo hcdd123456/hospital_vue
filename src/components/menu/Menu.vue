@@ -11,16 +11,16 @@
                 <i class="el-icon-s-home"></i>
                 <span slot="title" @click="index">首页</span>
             </el-menu-item>
-            <el-submenu index="2">
+            <el-submenu index="2" v-if="role===1">
                 <template slot="title">
                     <i class="el-icon-notebook-2"></i>
                     <span>用户管理</span>
                 </template>
                 <el-menu-item-group>
-                    <el-menu-item index="2-1" @click="user">用户列表</el-menu-item>
+                    <el-menu-item index="2-1" @click="user1" >用户列表</el-menu-item>
                 </el-menu-item-group>
             </el-submenu>
-            <el-submenu index="3">
+            <el-submenu index="3" v-if="role===1">
                 <template slot="title">
                     <i class="el-icon-setting"></i>
                     <span>科室管理</span>
@@ -39,7 +39,7 @@
               </el-menu-item-group>
             </el-submenu>
 
-          <el-submenu index="5">
+          <el-submenu index="5" v-if="role===1">
             <template slot="title">
               <i class="el-icon-setting"></i>
               <span>排班管理</span>
@@ -59,17 +59,24 @@
 </template>
 
 <script>
+  import {HOST} from '../../common/js/config'
+  import {mapGetters} from 'vuex'
     export default {
         data() {
             return{
-                active: "1"
+                active: "1",
+                role: ''
             }
+        },
+        created(){
+          this.role = this.user.usetype
         },
         methods: {
           index(){
+            console.log(this.role)
             this.$router.push("/main")
           },
-          user(){
+          user1(){
             this.$router.push('/main/user')
           },
           department(){
@@ -80,8 +87,16 @@
           },
           Rule(){
             this.$router.push('/main/rule')
+          },
+          logout(){
+            this.$router.push('/')
           }
-        }
+        },
+      computed: {
+        ...mapGetters([
+          'user'
+        ])
+      }
     }
 </script>
 
